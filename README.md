@@ -1,108 +1,62 @@
-text
-# 📈 AI Trading Agent with Real-Time Market Analysis
+# AI Trading Agent with Market Analysis
 
-An intelligent trading agent that leverages real-time stock data, local AI models, and automated decision-making. Supports both US and Indian stocks with robust fallback to mock data for complete reliability and privacy.
+A trading agent that uses local AI models (Ollama) to analyze real-time market data and financial news for both US and Indian stocks.
 
----
-
-## ✨ Features
-
-- **🤖 AI-Powered Sentiment Analysis:** Uses local Ollama models (Gemma2, Llama3) for financial news analysis
-- **🌍 Multi-Market Support:** US stocks (AAPL, MSFT) and Indian NSE stocks (RELIANCE.NS, TCS.NS)
-- **📊 Real-Time Data:** Polygon.io API integration for live prices
-- **📰 News Integration:** NewsAPI delivers up-to-date financial news
-- **💼 Portfolio Management:** Virtual trading with balance and holdings tracking
-- **⚡ Local Processing:** All analytics run locally; total data privacy
-- **🔧 Fallback System:** Automatic switch to high-quality mock data if APIs are unavailable
+This tool is built for privacy and reliability, running all AI analysis locally. It features a robust fallback system, using mock data when live APIs (Polygon.io, NewsAPI) are unavailable, ensuring the application always runs.
 
 ---
 
-## 🚀 Quick Start
+## Features
+
+* **Local Sentiment Analysis:** Uses Ollama (Gemma2, Llama3) to analyze financial news and provide BUY/SELL/HOLD recommendations.
+* **Multi-Market Support:** Capable of analyzing both US (NASDAQ/NYSE) and Indian (NSE) stocks.
+* **Real-Time Data:** Integrates with Polygon.io for live stock prices.
+* **News Integration:** Fetches current financial news via NewsAPI.
+* **Virtual Portfolio:** Includes a simple portfolio manager with a $10,000 starting balance for paper trading.
+* **Privacy-Focused:** All AI analysis runs 100% locally. No data is sent to external services.
+* **Mock Data Fallback:** Automatically uses high-quality mock data if API keys are not provided or are unavailable.
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
-- Python 3.8+
-- Ollama ([install from ollama.ai](https://ollama.ai))
-- API keys (optional): Polygon.io & NewsAPI
+* Python 3.8+
+* Ollama ([install from ollama.ai](https://ollama.ai))
+* API keys (Optional) for Polygon.io and NewsAPI
 
 ### Installation
 
-git clone <your-repo>
-cd trading-agent
-pip install -r requirements.txt
+1.  Clone the repository:
+    ```sh
+    git clone <your-repo-url>
+    cd trading-agent
+    ```
 
-text
+2.  Install the required Python packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-Install Ollama model:
+3.  Pull a local AI model:
+    ```sh
+    ollama pull gemma2:2b
+    ```
+    or
+    ```sh
+    ollama pull llama3.2
+    ```
 
-ollama pull gemma2:2b
+### Configuration (Optional)
 
-or
-ollama pull llama3.2
+Create a `.env` file in the root directory to use live data:
 
-text
+POLYGON_API_KEY=your_polygon_key_here NEWS_API_KEY=your_newsapi_key_here
 
-Configure API keys (optional):
+If this file is not present, the agent will automatically use mock data.
 
-Create .env file
-echo "POLYGON_API_KEY=your_polygon_key_here" > .env
-echo "NEWS_API_KEY=your_newsapi_key_here" >> .env
+### Running the Agent
 
-text
-
-Run the application:
-
+```sh
 python trading_agent.py
-
-text
-
----
-
-## 🎯 Usage
-
-1. Enter a stock ticker (e.g., `AAPL` or `RELIANCE.NS`)
-2. Click "Analyze Sentiment"—AI analyzes news and market sentiment
-3. Review trading decision—BUY/SELL/HOLD with confidence score
-4. Execute trades—Virtual trading with $10,000 starting capital
-5. Monitor portfolio—Track performance and transaction history
-
----
-
-## 🔧 Configuration
-
-The agent automatically detects available APIs and adjusts:
-- ✅ Live data when APIs are available
-- ✅ High-quality mock data as fallback
-- ✅ Local AI processing with Ollama
-- ✅ Rule-based analysis if Ollama unavailable
-
----
-
-## 📊 Supported Stocks
-
-**US Stocks:**  
-`AAPL`, `MSFT`, `GOOGL`, `TSLA`, `NVDA`, `JPM`, `V`
-
-**Indian Stocks:**  
-`RELIANCE.NS`, `TATAMOTORS.NS`, `HDFCBANK.NS`, `INFY.NS`, `TCS.NS`
-
----
-
-## 🤖 AI Capabilities
-
-- Natural language understanding of financial news
-- Sentiment scoring with confidence levels
-- Context-aware financial analysis
-- Explainable AI decisions with reasoning
-
----
-
-## 📝 License
-
-MIT License — you are welcome to use this project for personal or educational purposes.
-
----
-
-## ⚠️ Disclaimer
-
-This is a simulation tool for educational purposes only. Not financial advice. Real trading involves risk. Always conduct your own research before investing.
